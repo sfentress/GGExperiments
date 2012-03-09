@@ -1,0 +1,108 @@
+div {
+  background-repeat: no-repeat;
+}
+
+#sky {
+  background: url(../resources/images/sky.jpg);
+  overflow: hidden;
+  border: 5px solid #402309;
+  height: 600;
+}
+
+#world {
+  background: url(../resources/images/world.gif);
+  background-position: 0px 4px;
+  height: 700px;
+  width: 700px;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 250px;
+}
+
+#clouds {
+  background: url(../resources/images/clouds.png);
+  background-position: 0px 0px;
+  height: 700px;
+  width: 700px;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 250px;
+}
+
+.location {
+  cursor: pointer;
+  position: absolute;
+}
+
+#huts {
+  height: 90px;
+  width: 120px;
+  top: 160px;
+  left: 490px;
+}
+
+#houses {
+  height: 70px;
+  width: 150px;
+  top: 50px;
+  left: 270px;
+}
+
+#castle {
+  height: 120px;
+  width: 130px;
+  top: 160px;
+  left: 50px;
+}
+
+#town {
+  height: 110px;
+  width: 170px;
+  top: 490px;
+  left: 120px;
+}
+
+#dragon-right {
+  background: url(../resources/images/drakesprite-small.png);
+  width: 90px;
+  height: 80px;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 480px;
+  top: 100px;
+  -moz-transform:rotate(-20deg);
+  -webkit-transform:rotate(-20deg);
+  -o-transform:rotate(-20deg);
+  -ms-transform:rotate(-20deg);
+}
+
+#dragon-left {
+  background: url(../resources/images/drakesprite-small.png);
+  width: 90px;
+  height: 80px;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 480px;
+  top: 100px;
+  -moz-transform: rotate(-20deg) scaleX(-1);
+  -o-transform: rotate(-20deg) scaleX(-1);
+  -webkit-transform: rotate(-20deg) scaleX(-1);
+  transform: rotate(-20deg) scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+#message {
+  background: url(../resources/images/click-message.gif);
+  background-size: 100%;
+  width: 200px;
+  height: 100px;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 810px;
+  top: -50px;
+}
+
+
+
+

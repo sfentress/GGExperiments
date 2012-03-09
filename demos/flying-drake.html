@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>
+      $(function() {
+         setInterval('animateSprite()',100);
+         setInterval('moveSprite()', 1500);
+         setInterval('moveBackground()', 50);
+      });
+
+      var spriteFrame = 1;
+
+      animateSprite = function() {
+        var top = 439 * (spriteFrame % 8);
+        $('#dragon').css('backgroundPosition','-0px -'+top+'px');
+
+        spriteFrame++;
+      };
+
+
+      var moveFrame = 0;
+      var movementSequence = [[50,100], [100,80], [130,100], [180, 160], [220, 180], [160,100], [80, 70], [50, 40]];
+
+      moveSprite = function() {
+        var movement = movementSequence[moveFrame % movementSequence.length];
+         $('#dragon').animate({
+           left: movement[0],
+           top: movement[1]
+         }, 1000);
+        moveFrame++;
+      }
+
+      moveBackground = function() {
+        $('#mountains').css({'backgroundPosition': '-=5px -0px'});
+        $('#grass').css({'backgroundPosition': '-=20 -0px'});
+      }
+    </script>
+    <style type="text/css">
+      div {
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+
+      #wrapper {
+        background: url(../resources/images/sky.jpg);
+        overflow: hidden;
+        border: 5px solid #402309;
+        height: 600;
+      }
+
+      #mountains {
+        background: url(../resources/images/mountains.png);
+        background-position: 0px 0px;
+        height: 700;
+        width: 2000;
+      }
+
+      #grass {
+        background: url(../resources/images/grass.png);
+        background-position: 0px 0px;
+        height: 700;
+        width: 2000;
+        top: -30;
+        position: absolute;
+      }
+
+      #dragon {
+        background: url(../resources/images/drakesprite.png);
+        background-size: 100%;
+        width: 549;
+        height: 439;
+        background-repeat: no-repeat;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="mountains"></div>
+      <div id="grass"></div>
+      <div id="dragon"></div>
+    </div>
+  </body>
+</html>
