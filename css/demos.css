@@ -103,6 +103,13 @@ div {
   top: -50px;
 }
 
+ul {
+  left: 300px;
+  top: 50px;
+  position: absolute;
+  font-size: 1.2em;
+}
+
 
 
 
