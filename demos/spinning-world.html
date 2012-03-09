@@ -6,7 +6,7 @@
   <script src="../lib/jquery-animate-css-rotate-scale.js" type="text/javascript"></script>
   <script>
     $(function() {
-      $('.location').click(navigate);
+      $('.location').bind('click tap', navigate);
       
       $('#clouds').animate({rotate: '+=360deg'}, 25000);
       $('#world').animate({rotate: '-2deg'}, 1000);
