@@ -8,14 +8,23 @@
       $(function() {
         setInterval('animateRegular()',70);
         bounceRegular();
+        bounceLegs();
 
         $('#start').click(function() {
+          animateSlow();
           setInterval('animateSlow()',350);
           $('#start').attr("disabled", "disabled");
         });
+
+        $("#add").click(function() {
+          times = 30
+          while (times--) {
+            $("#add").parent().after($('<div class="bird-legs float animate-regular" style="position: relative; left: 50px; top: -1420px"><div class="bird-body"><div class="bird-wings" style="background-position: 0 0;"></div></div></div>'));
+          }
+        });
       });
 
-      var slowSpriteFrame = 0;
+      var slowSpriteFrame = 1;
 
       animateSlow = function() {
         var top = 175 * (slowSpriteFrame % 9);
@@ -28,8 +37,8 @@
       var regularSpriteFrame = 0;
 
       animateRegular = function() {
-        var top = 175 * (regularSpriteFrame % 9);
-        $('.animate-regular .bird-wings').css('backgroundPosition','-0px -'+top+'px');
+        var top = -175 * (regularSpriteFrame % 9);
+        $('.animate-regular .bird-wings').css('backgroundPositionY',function(i){if (i%4) return top; if (i%6) return top-700; if (i%2) return top-175; return top-350;});
 
         regularSpriteFrame++;
       };
@@ -41,9 +50,21 @@
         if (bounce++ % 2) {
           top = top * -1;
         }
-        $('.animate-regular').animate({'top': "-="+top+"px"}, {duration: 400, easing: 'swing', complete: bounceRegular})
+        $('.animate-regular:odd').animate({'top': "-="+top}, {duration: 400, easing: 'swing', complete: bounceRegular})
+
+        $('.animate-regular:even').animate({'top': "+="+top}, {duration: 400, easing: 'swing', complete: bounceRegular})
       }
 
+      bounceLeg = 0;
+
+      bounceLegs = function() {
+        var left = -6;
+        if (bounceLeg++ % 2) {
+          left = left * -1;
+        }
+        $('.animate-legs').animate({'left': "-="+left+"px"}, {duration: 700, easing: 'swing', complete: bounceLegs})
+        $('.animate-legs .bird-body').animate({'left': "+="+left+"px"}, {duration: 700, easing: 'swing'})
+      }
 
 
       var moveFrame = 0;
@@ -72,6 +93,12 @@
 
       .bird-body {
         background: url(../resources/images/sprite_examples/starling-body.png) 0 0 no-repeat;
+        width: 190px;
+        height: 175px;
+      }
+
+      .bird-legs {
+        background: url(../resources/images/sprite_examples/starling-legs.png) 0 0 no-repeat;
         width: 190px;
         height: 175px;
       }
@@ -127,8 +154,8 @@
       <p>
         For example, here is a simple bird, shown both with and without wings. The wings layer alone is shown on the right.
         <div class="container">
-          <div class="bird-body float"></div>
-          <div class="bird-body float" style="margin-left: 15px; margin-right:15px;"><div class="bird-wings" style="background-position: 0 -700px"></div></div>
+          <div class="bird-legs float"><div class="bird-body"></div></div>
+          <div class="bird-legs float" style="margin-left: 15px; margin-right:15px;"><div class="bird-body"><div class="bird-wings" style="background-position: 0 -700px"></div></div></div>
           <div class="bird-wings float" style="background-position: 0 -700px"></div>
         </div>
         <span style="font-size: 10px; float: right;">Bird images from <a href="http://www.keyframer.com/2012/05/07/using-the-adobe-flash-sprite-sheet-generator/#more-1056">http://www.keyframer.com</a>, then cut up in PS.</span>
@@ -141,12 +168,24 @@
         <div class="float">
           <button id="start" style="position: relative; top: 40px; left: 190px;">Start animating</button>
         </div>
-        <div class="bird-body float animate-slow" style="position: relative; left: 300px; top: -50px"><div class="bird-wings" style="background-position: 0 0;"></div></div>
-        <div class="bird-body float" style="height: 1575px; position: relative; left: 450px; top: -50px"><div class="bird-wings animate-smooth" style="height: 1575px; border: 1px solid #DDD; position: absolute; top: 0"></div></div>
+        <div class="bird-legs float animate-slow" style="position: relative; left: 300px; top: -50px"><div class="bird-body"><div class="bird-wings" style="background-position: 0 0;"></div></div></div>
+        <div class="bird-legs float" style="height: 1575px; position: relative; left: 450px; top: -50px"><div class="bird-body"><div class="bird-wings animate-smooth" style="height: 1575px; border: 1px solid #DDD; position: absolute; top: 0"></div></div></div>
       </p>
       <p style="clear: both; position: relative; top: -1400px;">
         Speeding it up a bit, and adding a bit of a bounce to the whole thing, we get a flying bird.
-        <div class="bird-body float animate-regular" style="position: relative; left: 200px; top: -1390px"><div class="bird-wings" style="background-position: 0 0;"></div></div>
+        <div class="bird-legs float animate-regular" style="position: relative; left: 200px; top: -1420px"><div class="bird-body"><div class="bird-wings" style="background-position: 0 0;"></div></div></div>
+      </p>
+      <p style="clear: both; position: relative; top: -1400px;">
+        Finally, let's make it look just a little bit nicer by animating the legs:
+        <div class="animate-regular ">
+          <div class="bird-legs float animate-legs" style="position: relative; left: 200px; top: -1410px"><div class="bird-body"><div class="bird-wings" style="background-position: 0 -350px;"></div></div></div>
+        </div>
+      </p>
+      <p style="clear: both; position: relative; top: -1410px;">
+        How many of these can we animate at once? Quite a lot it turns out! Add 30 more birds below by clicking on the button:
+      <p/>
+      <p style="clear: both; position: relative; top: -1410px;">
+        <button id="add">Add 30 birds!</button>
       </p>
     </div>
   </body>
