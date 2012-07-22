@@ -66,23 +66,6 @@
         $('.animate-legs .bird-body').animate({'left': "+="+left+"px"}, {duration: 700, easing: 'swing'})
       }
 
-
-      var moveFrame = 0;
-      var movementSequence = [[50,100], [100,80], [130,100], [180, 160], [220, 180], [160,100], [80, 70], [50, 40]];
-
-      moveSprite = function() {
-        var movement = movementSequence[moveFrame % movementSequence.length];
-         $('#dragon').animate({
-           left: movement[0],
-           top: movement[1]
-         }, 1000);
-        moveFrame++;
-      }
-
-      moveBackground = function() {
-        $('#mountains').css({'backgroundPosition': '-=5px -0px'});
-        $('#grass').css({'backgroundPosition': '-=20 -0px'});
-      }
     </script>
     <style type="text/css">
       div {
@@ -107,38 +90,7 @@
         background: url(../resources/images/sprite_examples/starling-wings.png) 0 0;
         width: 190px;
         height: 175px;
-      }
-
-      #wrapper {
-        background: url(../resources/images/sky.jpg);
-        overflow: hidden;
-        border: 5px solid #402309;
-        height: 600;
-      }
-
-      #mountains {
-        background: url(../resources/images/mountains.png);
-        background-position: 0px 0px;
-        height: 700;
-        width: 2000;
-      }
-
-      #grass {
-        background: url(../resources/images/grass.png);
-        background-position: 0px 0px;
-        height: 700;
-        width: 2000;
-        top: -30;
-        position: absolute;
-      }
-
-      #dragon {
-        background: url(../resources/images/drakesprite.png);
-        background-size: 100%;
-        width: 549;
-        height: 439;
-        background-repeat: no-repeat;
-        position: absolute;
+      }sition: absolute;
       }
     </style>
   </head>
@@ -180,6 +132,9 @@
         <div class="animate-regular ">
           <div class="bird-legs float animate-legs" style="position: relative; left: 200px; top: -1410px"><div class="bird-body"><div class="bird-wings" style="background-position: 0 -350px;"></div></div></div>
         </div>
+      </p>
+      <p>
+        We can animate every trait individually, and we can also choose to animate traits in different ways &mdash; for example, wings may have a large flap while the Drake is flying, but they may also move a little while the Drake is walking, or twitch while the Drake is standing still. In this way we can create different animation sequences.
       </p>
       <p style="clear: both; position: relative; top: -1410px;">
         How many of these can we animate at once? Quite a lot it turns out! Add 30 more birds below by clicking on the button:
