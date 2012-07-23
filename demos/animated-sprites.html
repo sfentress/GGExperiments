@@ -21,7 +21,7 @@
         $("#add").click(function() {
           times = 30
           while (times--) {
-            $("#add").parent().after($('<div class="bird-legs float animate-regular" style="position: relative; left: 50px; top: -1420px"><div class="bird-body"><div class="bird-wings" style="background-position: 0 0;"></div></div></div>'));
+            $("#add").parent().after($('<div class="bird-legs float animate-regular" style="position: relative; left: 50px; top: -1420px"><div class="bird-body"><div class="bird-wings animate-regular-wings" style="background-position: 0 0;"></div></div></div>'));
           }
         });
       });
@@ -30,7 +30,7 @@
 
       animateSlow = function() {
         var top = 175 * (slowSpriteFrame % 9);
-        $('.animate-slow .bird-wings').css('backgroundPosition','-0px -'+top+'px');
+        $('.animate-slow-wings').css('backgroundPosition','-0px -'+top+'px');
         $('.animate-smooth').animate({'top': "-"+top+"px"}, {duration: 100, easing: 'linear'});
 
         slowSpriteFrame++;
@@ -40,7 +40,7 @@
 
       animateRegular = function() {
         var top = -175 * (regularSpriteFrame % 9);
-        $('.animate-regular .bird-wings').css('backgroundPositionY',function(i){if (i%4) return top; if (i%6) return top-700; if (i%2) return top-175; return top-350;});
+        $('.animate-regular-wings').css('backgroundPositionY',function(i){if (i%4) return top; if (i%6) return top-700; if (i%2) return top-175; return top-350;});
 
         regularSpriteFrame++;
       };
@@ -123,17 +123,17 @@
         <div class="float">
           <button id="start" style="position: relative; top: 40px; left: 190px;">Start animating</button>
         </div>
-        <div class="bird-legs float animate-slow" style="position: relative; left: 300px; top: -50px"><div class="bird-body"><div class="bird-wings" style="background-position: 0 0;"></div></div></div>
+        <div class="bird-legs float animate-slow" style="position: relative; left: 300px; top: -50px"><div class="bird-body"><div class="bird-wings animate-slow-wings" style="background-position: 0 0;"></div></div></div>
         <div class="bird-legs float" style="height: 1575px; position: relative; left: 450px; top: -50px"><div class="bird-body"><div class="bird-wings animate-smooth" style="height: 1575px; border: 1px solid #DDD; position: absolute; top: 0"></div></div></div>
       </p>
       <p style="clear: both; position: relative; top: -1400px;">
         Speeding it up a bit, and adding a bit of a bounce to the whole thing, we get a flying bird.
-        <div class="bird-legs float animate-regular" style="position: relative; left: 200px; top: -1420px"><div class="bird-body"><div class="bird-wings" style="background-position: 0 0;"></div></div></div>
+        <div class="bird-legs float animate-regular" style="position: relative; left: 200px; top: -1420px"><div class="bird-body"><div class="bird-wings animate-regular-wings" style="background-position: 0 0;"></div></div></div>
       </p>
       <p style="clear: both; position: relative; top: -1400px;">
         Finally, let's make it look just a little bit nicer by animating the legs as a third layer:
         <div class="animate-regular ">
-          <div class="bird-legs float animate-legs" style="position: relative; left: 200px; top: -1410px"><div class="bird-body"><div class="bird-wings" style="background-position: 0 -350px;"></div></div></div>
+          <div class="bird-legs float animate-legs" style="position: relative; left: 200px; top: -1410px"><div class="bird-body"><div class="bird-wings animate-regular-wings" style="background-position: 0 -350px;"></div></div></div>
         </div>
       </p>
       <p style="clear: both; position: relative; top: -1410px;">
